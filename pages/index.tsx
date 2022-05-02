@@ -1,20 +1,32 @@
+import { ProductInterface } from 'components/Product';
 import { client } from 'lib/client';
+import Head from 'next/head';
 import { Product, FooterBanner, HeroBanner } from '../components';
+import { BannerData } from './../components/HeroBanner';
 
-const Home = ({ products, bannerData }: any) => {
+interface Props {
+  products: ProductInterface[];
+  bannerData: BannerData[];
+}
+
+const Home = ({ products, bannerData }: Props) => {
   return (
     <>
-      <HeroBanner />
+      <Head>
+        <title>Dynamix Tech Store - Shamar Morrison</title>
+      </Head>
+
+      {bannerData.length && <HeroBanner heroBanner={bannerData[0]} />}
       <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Speakers of many variations</p>
       </div>
       <div className="products-container">
-        {products?.map((product: any) => {
-          return <p>{product.name}</p>;
+        {products?.map((product: ProductInterface) => {
+          return <Product product={product} key={product._id} />;
         })}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData?.[0]} />
     </>
   );
 };

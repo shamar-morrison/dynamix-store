@@ -1,6 +1,10 @@
 import React from 'react';
 
-const FooterBanner = () => {
+interface Props {
+  footerBanner: any;
+}
+
+const FooterBanner = ({ footerBanner }: Props) => {
   return (
     <div>
       <p>Footer banner</p>
