@@ -44,7 +44,7 @@ const HeroBanner = ({ heroBanner }: Props) => {
         <img src={urlFor(heroBanner.image).url()} alt="headphones" className="hero-banner-image" />
 
         <div>
-          <Link href={`/product/${heroBanner.product}`}>
+          <Link href={`/product/${heroBanner.product}`} passHref>
             <button type="button">{heroBanner.buttonText}</button>
           </Link>
           <div className="desc">
